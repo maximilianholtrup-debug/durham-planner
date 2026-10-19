@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-Y3UmI/b5KhvILfdFROlqfLAI9nsZcyQHyIBLEFIuWDE='; form-action 'none'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'">
+<title>Durham Smart Weekly Planner | Offline & Online</title>
+<style>
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#203047;background:#f4f7fb;font-size:14px}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;border:1px solid #dbe2ef;background:#fff;border-radius:9px;padding:9px 12px;color:#2b4168;font-weight:650}button:hover{background:#edf2fd}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #467bd6;outline-offset:2px}.blue{color:#fff;background:#2759bd;border-color:#2759bd}.blue:hover{background:#1d489f}.small{font-size:12px;padding:6px 9px}.danger{color:#a33434}.wrap{max-width:1530px;margin:auto;padding:26px}.top,.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.actions{display:flex;flex-wrap:wrap;gap:8px}.eyebrow{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#557bb3;font-size:11px}h1{font-size:31px;letter-spacing:-1px;margin:5px 0 6px}h2{font-size:17px;margin:0}h3{font-size:14px;margin:0}.sub,.help{color:#718198;font-size:12px;line-height:1.5}.section{margin-top:19px}.panel{border:1px solid #e0e7f0;background:#fff;border-radius:15px;padding:16px;box-shadow:0 2px 12px #162d4e08}.priorities,.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.prior{display:flex;align-items:center;gap:12px}.number{flex:none;background:#e9efff;color:#2759bd;border-radius:8px;padding:8px 11px;font-weight:800}.prior input{width:100%;padding:9px;border:1px solid #dce3ed;border-radius:8px}.stat strong{font-size:23px;display:block;margin-top:6px}.calendarhead{margin:20px 0 12px}.datefield{padding:8px;border:1px solid #d9e4f1;border-radius:8px}.calendar{overflow-x:auto;border-radius:15px;border:1px solid #dfe6f0;background:white}.calendar table{border-collapse:collapse;width:100%;min-width:1120px;table-layout:fixed}.calendar th,.calendar td{border-right:1px solid #e7ecf4;border-bottom:1px solid #e7ecf4;vertical-align:top}.calendar th{padding:13px 7px;background:#f1f5fb}.calendar th:first-child{width:145px}.calendar td:first-child{background:#f8fafd;padding:12px 10px;font-weight:800;color:#516780;width:145px}.calendar td:first-child small{display:block;font-weight:400;color:#7f8c9e;padding-top:5px}.slot{min-height:124px;padding:6px}.event{border:0;display:block;text-align:left;width:100%;padding:7px;border-radius:7px;margin-bottom:5px;background:#eaf0ff;color:#274d96;border-left:3px solid #4777db;font-size:12px;white-space:normal;overflow-wrap:anywhere}.event.vol{background:#eaf7ef;border-left-color:#3b9968;color:#246746}.event.done{opacity:.5;text-decoration:line-through}.event span{display:block;font-size:10px;opacity:.78;margin-bottom:2px}.addslot{font-size:11px;border:1px dashed #d1daea;color:#627998;width:100%;padding:6px}.flexcols{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tasklist{margin:9px 0 0;min-height:60px}.task{display:flex;align-items:start;gap:7px;padding:7px 0;border-bottom:1px solid #eff2f7}.task label{flex:1;overflow-wrap:anywhere}.task label.finished{text-decoration:line-through;color:#9aa6b6}.task input{margin-top:4px}.task button{border:0;padding:0 5px;color:#95a4b8}.newtask{display:flex;gap:6px;margin-top:12px}.newtask input{width:100%;min-width:0;border:1px solid #dae3ee;border-radius:8px;padding:8px}.volgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.volcard{display:flex;flex-direction:column;gap:9px;min-height:147px}.volcard .schedule{color:#31845c;font-size:12px;font-weight:750}.volcard p{margin:0;color:#718198;font-size:12px;line-height:1.45;flex:1}.volcard.off{opacity:.5}.foot{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notes{border-radius:9px;border:1px solid #dbe3ee;width:100%;min-height:110px;resize:vertical;padding:10px;margin-top:9px}.recommendations p{font-size:13px;border-bottom:1px solid #edf0f5;margin:0;padding:9px 0;line-height:1.45}.recommendations p:last-child{border:0}.badge{display:inline-block;border-radius:999px;font-size:11px;background:#edf3ff;color:#345d9b;padding:4px 8px}.warning{color:#9b5525}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.overlay{position:fixed;inset:0;background:#1629489c;display:none;justify-content:center;align-items:center;padding:15px;z-index:5}.overlay.open{display:flex}.dialog{background:#fff;padding:22px;border-radius:17px;width:min(490px,100%);max-height:94vh;overflow:auto}.dialog h2{margin-bottom:8px}.dialog label{display:block;font-weight:700;color:#435775;margin-top:11px;margin-bottom:5px;font-size:12px}.dialog input,.dialog textarea,.dialog select{width:100%;padding:9px;border-radius:8px;border:1px solid #dbe3ef}.dialog textarea{min-height:76px}.dialog .row{margin-top:16px}.dialog textarea.backup{min-height:140px;font-family:monospace;font-size:11px}.hidden{display:none!important}.footer{font-size:12px;color:#8490a2;text-align:center;margin-top:18px}.divider{height:1px;background:#e9edf5;margin:12px 0}@media(max-width:950px){.volgrid{grid-template-columns:repeat(2,1fr)}.flexcols{grid-template-columns:repeat(2,1fr)}}@media(max-width:630px){.wrap{padding:12px}.priorities,.stats,.volgrid,.flexcols,.foot{grid-template-columns:1fr}h1{font-size:25px}.panel{padding:13px}}@media print{.actions,.addslot,.newtask,.task button,.volcard button,.footer{display:none!important}.wrap{padding:0}.calendar{overflow:visible}.calendar table{min-width:0}.calendar th:first-child,.calendar td:first-child{width:95px}.slot{min-height:85px}.panel{box-shadow:none;break-inside:avoid}}
+
+
+.daychecks{display:flex;flex-wrap:wrap;gap:8px;padding:5px 0}.daychecks label{margin:0;display:flex;align-items:center;gap:5px;font-size:12px;background:#f1f5fb;padding:7px 9px;border-radius:8px;border:1px solid #e0e7f0}.daychecks input{width:auto;margin:0}.session-repeat{font-size:10px;opacity:.76;display:block;margin-top:3px}#repeatEditHint:empty{display:none}
+.quick-add{border-top:3px solid #4777db}.natural-form{display:flex;gap:9px;margin-top:12px}.natural-form input{flex:1;min-width:0;border:1px solid #dbe3ef;border-radius:9px;padding:11px}.natural-form button{flex:none}.smart-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px}.smart-form{display:grid;grid-template-columns:1fr 155px;gap:11px;margin-top:14px}.smart-form label{display:grid;gap:5px;font-size:12px;font-weight:700;color:#526581}.smart-form select,.smart-form input{width:100%;border:1px solid #dbe3ef;border-radius:9px;padding:9px;color:#203047;background:#fff}.smart-form button{align-self:end}.smart-results{margin-top:14px}.suggested-slot,.priority-item{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:10px 0;border-top:1px solid #e7edf5}.slot-label{display:grid;gap:2px}.slot-label small{color:#7a8a9e}.clash-item{border-top:1px solid #e5ebf4;padding:12px 0;display:grid;justify-items:start;gap:5px}.clash-item strong{color:#a05a2e}.clash-item small{color:#8b684e}.notice-warning{color:#b05b2e;margin-top:7px}.notice-good{color:#328054;margin-top:7px}.analysis-chart{display:grid;gap:10px;margin:17px 0}.bar-row{display:grid;grid-template-columns:42px 1fr 55px;gap:11px;align-items:center;font-size:12px}.bar-row strong{text-align:right}.bar-track{height:12px;border-radius:15px;background:#edf2f8;overflow:hidden}.bar-fill{height:100%;border-radius:15px;background:linear-gradient(90deg,#5682d9,#284fa5)}.analysis-cats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.category-chip{background:#eff4ff;padding:6px 9px;border-radius:99px;color:#355d9b;font-size:12px}.priority-queue{margin-top:6px}.task-body{flex:1;min-width:0}.task-actions{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}.task-actions button{padding:4px;font-size:10px}.task{align-items:center}.chat-history{height:195px;overflow-y:auto;border:1px solid #e6ecf4;border-radius:12px;padding:12px;background:#f7f9fd;display:flex;flex-direction:column;gap:9px;margin-top:12px}.chat-msg{white-space:pre-line;padding:9px 12px;border-radius:11px;max-width:87%;font-size:13px;line-height:1.5}.chat-msg.bot{align-self:flex-start;background:white;border:1px solid #e4e9f2}.chat-msg.user{align-self:flex-end;background:#e5efff;color:#244777}.chat-suggestions{display:flex;gap:7px;flex-wrap:wrap}.priority-item strong{display:block}.smart-layout .panel{min-width:0}@media(max-width:900px){.smart-layout{grid-template-columns:1fr}}@media(max-width:580px){.natural-form{flex-direction:column}.smart-form{grid-template-columns:1fr}.task-actions{max-width:135px}.chat-msg{max-width:95%}}@media print{.quick-add,.smart-layout,.chat-history,#chatForm,.priority-item button,.task-actions{display:none!important}}
+
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div><div class="eyebrow">Durham · Smart weekly planner</div><h1>Weekly Planner</h1><div class="sub">University · Volunteering · Smart scheduling · Recurring sessions · Weekly insights</div></div><div class="actions"><button type="button" id="quickRepeat">+ Recurring session</button><button type="button" id="icsOpen" class="blue">Import university .ics</button><input class="hidden" id="icsFile" type="file" accept=".ics,text/calendar"><button type="button" id="backupOpen">Backup / Restore</button><button type="button" id="printBtn">Print</button></div></header>
+<section class="section panel" style="border-left:4px solid #4777db" aria-label="Offline storage note"><div class="row"><div><strong>Private & offline-capable</strong><div class="help">The smart planner runs entirely in your browser, online or offline. Suggestions and chat use local rules—not a live generative AI model. Your entries are saved on this device; use <b>Backup / Restore</b> to transfer them. Never publish your private university calendar URL.</div></div><span class="badge">No account · No external requests</span></div></section>
+
+<section class="section panel quick-add"><div class="row"><div><h2>✨ Add an activity by typing naturally</h2><div class="help">Example: “Volunteering every Wednesday at 1:30pm for 2 hours” · “Study on Friday at 8am”</div></div><span class="badge">Local language parser</span></div>
+<form id="naturalForm" class="natural-form"><input id="naturalText" type="text" maxlength="250" placeholder="e.g. Gym every Tuesday and Thursday at 6pm for 1 hour" aria-label="Describe an activity"><button type="submit" class="blue">Review event →</button></form>
+<div id="naturalMessage" class="help" role="status"></div></section>
+<section class="section priorities" id="priorities"></section>
+<section class="section stats"><div class="panel stat"><div class="sub">Planned events this week</div><strong id="statEvents">0</strong></div><div class="panel stat"><div class="sub">Completed tasks</div><strong id="statTasks">0</strong></div><div class="panel stat"><div class="sub">Volunteering activities</div><strong id="statVol">0</strong></div></section>
+
+<section class="section smart-layout">
+<div class="panel"><div class="row"><h2>◷ Smart scheduling</h2><span class="badge">Free-time finder</span></div><p class="help">Suggests openings around your confirmed and recurring events. Untimed activities cannot be automatically blocked.</p>
+<form id="smartForm" class="smart-form">
+<label>Activity<input id="smartTitle" maxlength="120" value="Study session" required></label>
+<label>Length<select id="smartDuration"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option><option value="180">3 hours</option></select></label>
+<label>Preferred period<select id="smartPeriod"><option value="any">Any time (8am–10pm)</option><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option></select></label>
+<button type="submit" class="blue">Find available times</button>
+</form><div id="smartResults" aria-live="polite" class="smart-results"><p class="help">Choose a duration and select “Find available times”.</p></div></div>
+<div class="panel"><div class="row"><h2>⚠ Schedule conflicts</h2><span class="badge" id="clashCount">Checking</span></div><p class="help">Definite clashes require start and end times. Where an end time is missing, a nearby session is flagged as a possible clash, not a confirmed one.</p><div id="clashList" aria-live="polite"></div></div>
+</section>
+<section class="section panel"><div class="row"><div><h2>Durham University Timetable</h2><div class="help">Download your personal .ics file from Durham MyTimetable, then import it here. For privacy, your private calendar subscription link is never included in this file. Refresh imports manually when your university schedule changes.</div></div><span class="badge" id="icsStatus">Not imported</span></div></section>
+<section class="section panel"><div class="row"><div><h2>Google Calendar import</h2><div class="help">Export your Google Calendar to an <code>.ics</code> file, then import it here. Google Calendar → Settings → Import &amp; export → Export. Extract the downloaded ZIP first. Imported Google events are kept separate from your Durham classes.</div></div><div class="controls"><span class="badge" id="googleStatus">Not imported</span><button id="googleIcsOpen" type="button">Import Google .ics</button><input class="hidden" id="googleIcsFile" type="file" accept=".ics,text/calendar"></div></div><p class="help">This is manual calendar integration. Live Google sign-in and two-way sync would require OAuth and a secure hosted service.</p></section>
+<div class="calendarhead row"><h2 id="weekTitle">Weekly schedule</h2><div class="controls"><button type="button" id="prevWeek">← Previous</button><input class="datefield" id="pickWeek" type="date" aria-label="Choose week"><button type="button" id="nextWeek">Next →</button><button type="button" id="todayWeek">This week</button></div></div>
+<section class="calendar"><table><thead><tr id="days"></tr></thead><tbody id="schedule"></tbody></table></section>
+
+<section class="section panel"><div class="row"><div><h2>Weekly time analysis</h2><p class="help">Hours are calculated only for events with confirmed start and end times. Overlapping events are not double-counted in each day's total; untimed sessions are excluded.</p></div><span class="badge" id="totalHours">0 recorded hours</span></div><div id="analysisChart" class="analysis-chart" aria-label="Planned hours by weekday"></div><div id="analysisCategories" class="analysis-cats"></div><div class="help" id="workloadHint"></div></section>
+<section class="section panel"><div class="row"><div><h2>Priority queue</h2><p class="help">Deadline and urgency ordering. Set priority and due dates in each task card.</p></div><span class="badge">Deadline-aware</span></div><div id="priorityQueue" class="priority-queue"></div></section>
+<section class="section"><div class="row"><h2>Volunteering, community and leadership</h2><span class="sub">Recurring sessions can be edited</span></div><div class="volgrid section" id="volGrid"></div></section>
+<section class="section"><h2>Tasks for this week</h2><div class="flexcols section" id="boards"></div></section>
+
+<section class="section panel"><div class="row"><div><h2>💬 Planning assistant</h2><p class="help">Ask about your timetable, conflicts, available study time and workload. Answers are generated on-device from your saved events; this is not connected to a generative AI service.</p></div><span class="badge">Works offline</span></div>
+<div id="chatHistory" class="chat-history" aria-live="polite"><div class="chat-msg bot">Try: “When can I fit 3 hours of studying?”, “Any conflicts on Wednesday?”, “What are my priorities?”, or “How many volunteering hours?”</div></div>
+<form id="chatForm" class="natural-form"><input id="chatInput" maxlength="400" placeholder="Ask about your week…" aria-label="Ask planning assistant" required><button type="submit" class="blue">Ask</button></form></section>
+<section class="section foot"><div class="panel"><h2>Notes</h2><textarea class="notes" id="notes" placeholder="Notes, errands and reminders for this week"></textarea></div><div class="panel recommendations"><h2>Smart planning recommendations</h2><div id="recommend"></div></div></section>
+<div class="footer">Works online and offline · Browser-only storage · Calendar .ics import is manual · No external scripts or network requests</div>
+</main>
+<div class="overlay" id="eventOverlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="eventHeading"><h2 id="eventHeading">Add event</h2><form id="eventForm"><label for="evTitle">Event</label><input id="evTitle" required maxlength="180"><label for="evDate">Date</label><input id="evDate" type="date" required><div class="row"><div style="flex:1"><label for="evStart">Start time</label><input id="evStart" type="time"></div><div style="flex:1"><label for="evEnd">End time (optional)</label><input id="evEnd" type="time"></div></div><label for="evType">Schedule section (automatic when time is entered)</label><select id="evType"><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option><option value="deadline">Deadline</option><option value="wellbeing">Exercise / wellbeing</option></select><p class="help" id="evSectionHint" role="status">Enter a start time to select Morning, Afternoon, or Evening automatically.</p><label for="evRepeat">Repeat this session</label>
+<select id="evRepeat"><option value="none">Does not repeat</option><option value="daily">Every day</option><option value="weekdays">Every weekday (Mon–Fri)</option><option value="weekly">Every week</option><option value="fortnightly">Every 2 weeks</option><option value="monthly">Every month (same date)</option><option value="custom">Custom days each week</option></select>
+<div id="customDaysRow" class="hidden"><label>Repeat on these days</label><div class="daychecks" id="evRepeatDays"><label><input type="checkbox" value="1">Mon</label><label><input type="checkbox" value="2">Tue</label><label><input type="checkbox" value="3">Wed</label><label><input type="checkbox" value="4">Thu</label><label><input type="checkbox" value="5">Fri</label><label><input type="checkbox" value="6">Sat</label><label><input type="checkbox" value="0">Sun</label></div></div>
+<div id="repeatUntilRow" class="hidden"><label for="evRepeatEnd">Repeat until (optional)</label><input id="evRepeatEnd" type="date"><p class="help">Leave blank to repeat indefinitely. Monthly events on the 29th–31st skip months without that date.</p></div>
+<p class="help" id="repeatEditHint"></p>
+<div class="actions" id="repeatExceptionActions"><button type="button" class="small hidden" id="skipOccurrence">Skip this date only</button><button type="button" class="small hidden" id="clearSkipped">Restore skipped dates</button></div><label for="evCategory">Activity category</label><select id="evCategory"><option value="University">University / Lecture</option><option value="Study">Study</option><option value="Volunteering">Volunteering</option><option value="Exercise">Exercise / Wellbeing</option><option value="Social">Social</option><option value="Personal">Personal / Admin</option><option value="Other">Other</option></select>
+<div class="help" id="evConflictHint" role="status"></div>
+<label for="evDetail">Details</label><textarea id="evDetail"></textarea><div class="row"><button type="button" id="removeEvent" class="danger hidden">Delete</button><div class="actions"><button type="button" id="closeEvent">Cancel</button><button type="submit" class="blue">Save</button></div></div></form></div></div>
+<div class="overlay" id="volOverlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="volHeading"><h2 id="volHeading">Edit volunteering</h2><form id="volForm"><label for="volTitle">Activity</label><input id="volTitle" required maxlength="150"><label for="volPattern">Frequency</label><select id="volPattern"><option value="weekly">Every week</option><option value="monthly">First and last Saturday of the month</option><option value="unscheduled">Time to be confirmed</option></select><label for="volDay">Day (for weekly activity)</label><select id="volDay"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select><div class="row"><div style="flex:1"><label for="volStart">Start time</label><input id="volStart" type="time"></div><div style="flex:1"><label for="volEnd">End time (if known)</label><input id="volEnd" type="time"></div></div><label for="volDetails">Description</label><textarea id="volDetails"></textarea><label><input type="checkbox" id="volActive" style="width:auto"> Active</label><div class="row"><button type="button" id="closeVol">Cancel</button><button class="blue" type="submit">Save activity</button></div></form></div></div>
+<div class="overlay" id="taskOverlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="taskHeading"><h2 id="taskHeading">Edit task</h2><form id="taskForm"><label for="taskTitle">Task</label><input id="taskTitle" maxlength="200" required><label for="taskPriority">Priority</label><select id="taskPriority"><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select><label for="taskDue">Due date (optional)</label><input id="taskDue" type="date"><label for="taskEst">Estimated duration (minutes)</label><select id="taskEst"><option value="30">30 minutes</option><option value="60">1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option><option value="180">3 hours</option></select><div class="row"><button type="button" id="taskClose">Cancel</button><button type="submit" class="blue">Save task</button></div></form></div></div>
+<div class="overlay" id="backupOverlay"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="backupTitle"><h2 id="backupTitle">Backup / Restore</h2><p class="help">Your planner saves only in this browser, not in a shared online account. To move from the offline planner or to another device, copy or download this backup, then Restore it there.</p><textarea id="backupText" class="backup" spellcheck="false"></textarea><div class="row"><button type="button" id="downloadBackup" class="blue">Download backup</button><button type="button" id="restoreBtn">Restore from text</button><button type="button" id="backupClose">Close</button></div><div class="divider"></div><label for="backupFile">Or restore a previous planner backup (.json)</label><input id="backupFile" type="file" accept=".json,application/json"></div></div>
+<script>
+'use strict';
+// Online-hostable static app. No requests to external services or embedded personal calendar URLs.
+const KEY='durham-weekly-planner-offline-v1';
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const TYPES=[['morning','Morning','07:00–12:00'],['afternoon','Afternoon','12:00–17:00'],['evening','Evening','17:00–22:00'],['deadline','Key task / deadline',''],['wellbeing','Exercise / wellbeing','']];
+const BOARDS=[['study','University / Study'],['life','Admin / Life'],['shopping','Shopping / Errands'],['next','Next Week']];
+const VOL_DEFAULTS=[
+ {id:'gilesgate',title:'Gilesgate wellbeing project',pattern:'weekly',day:6,start:'09:15',end:'',details:'Food, treats and community check-ins; check volunteering screening requirements.',active:true},
+ {id:'sherburn',title:'Sherburn House Charity',pattern:'weekly',day:3,start:'13:30',end:'',details:'Companionship for residents at a senior care home in Durham.',active:true},
+ {id:'cemetery',title:'Stockton Road Cemetery Maintenance',pattern:'weekly',day:3,start:'14:00',end:'',details:'Maintenance and renovation of the community cemetery.',active:true},
+ {id:'riverscape',title:'Riverscape litter collection',pattern:'monthly',day:6,start:'',end:'',details:'Riverbank litter collection on the first and last Saturday each month; time unconfirmed.',active:true},
+ {id:'durhamworks',title:'DurhamWorks Business Ambassador',pattern:'unscheduled',day:1,start:'',end:'',details:'Careers sessions, mock interviews and school enterprise activities; dates to be confirmed.',active:true},
+ {id:'rep',title:'Course Representative',pattern:'unscheduled',day:1,start:'',end:'',details:'Accounting and Finance student representation; meeting times to be confirmed.',active:true}
+];
+const $=id=>document.getElementById(id);
+function localDate(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function parseDate(s){return new Date(s+'T12:00:00')}
+function plusDays(s,n){const d=parseDate(s);d.setDate(d.getDate()+n);return localDate(d)}
+function monday(s){const d=parseDate(s);d.setDate(d.getDate()-(d.getDay()+6)%7);return localDate(d)}
+function emptyWeek(){return {priorities:['','',''],notes:'',tasks:{study:[],life:[],shopping:[],next:[]}}}
+function defaults(){const w=emptyWeek();w.tasks.shopping=['Clock','Printer','Laundry bag','Spatula','Dry shampoo'].map((t,i)=>({id:'shop'+i,text:t,done:false}));return {currentWeek:monday(localDate(new Date())),weeks:{[monday(localDate(new Date()))]:w},events:[],volunteering:VOL_DEFAULTS.map(v=>({...v})),volDone:{},importInfo:'',googleImportInfo:''}}
+function normalize(data){if(!data||typeof data!=='object')throw Error('Invalid backup');const state=defaults();state.currentWeek=/^\d{4}-\d{2}-\d{2}$/.test(data.currentWeek||'')?monday(data.currentWeek):state.currentWeek;state.weeks=data.weeks&&typeof data.weeks==='object'?data.weeks:state.weeks;state.events=Array.isArray(data.events)?data.events:[];state.volunteering=Array.isArray(data.volunteering)?data.volunteering:state.volunteering;state.volDone=data.volDone||data.volunteerDone||{};state.importInfo=data.importInfo||'';state.googleImportInfo=data.googleImportInfo||'';return state}
+let state;try{state=normalize(JSON.parse(localStorage.getItem(KEY)))}catch{state=defaults()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{alert('Browser storage is unavailable. Changes may not persist.')}}
+function current(){const key=state.currentWeek;if(!state.weeks[key])state.weeks[key]=emptyWeek();const w=state.weeks[key];w.tasks ||= {};for(const [k] of BOARDS)w.tasks[k] ||= [];w.priorities ||= ['','',''];return w}
+function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n}
+function btn(text,handler,cls=''){const b=el('button',text,cls);b.type='button';b.addEventListener('click',handler);return b}
+function nextId(){return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
+function inMonthEdge(s){const d=parseDate(s);if(d.getDay()!==6)return false;const first=d.getDate()<=7;const next=parseDate(plusDays(s,7));return first||next.getMonth()!==d.getMonth()}
+function activeVolDate(v,s){if(!v.active)return false;if(v.pattern==='weekly')return parseDate(s).getDay()===Number(v.day);if(v.pattern==='monthly')return inMonthEdge(s);return false}
+function differenceDays(a,b){return Math.round((Date.parse(a+'T00:00:00Z')-Date.parse(b+'T00:00:00Z'))/86400000)}
+function repeatMatches(e,date){
+ const r=e.repeat;
+ if(!r||!r.kind||r.kind==='none')return e.date===date;
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(e.date||'')||date<e.date||(r.until&&date>r.until))return false;
+ if(Array.isArray(r.skips)&&r.skips.includes(date))return false;
+ const delta=differenceDays(date,e.date),weekday=parseDate(date).getDay(),startDay=parseDate(e.date).getDay();
+ if(r.kind==='daily')return true;
+ if(r.kind==='weekdays')return weekday>=1&&weekday<=5;
+ if(r.kind==='weekly')return weekday===startDay&&delta%7===0;
+ if(r.kind==='fortnightly')return weekday===startDay&&delta%14===0;
+ if(r.kind==='custom')return (r.days||[]).map(Number).includes(weekday);
+ if(r.kind==='monthly'){const d=parseDate(date),s=parseDate(e.date);return d.getDate()===s.getDate()&&d.getFullYear()*12+d.getMonth()>=s.getFullYear()*12+s.getMonth()}
+ return e.date===date;
+}
+function repeatLabel(kind){return ({daily:'Daily',weekdays:'Weekdays',weekly:'Weekly',fortnightly:'Every 2 weeks',monthly:'Monthly',custom:'Selected weekdays'})[kind]||''}
+function datesThisWeek(){return Array.from({length:7},(_,i)=>plusDays(state.currentWeek,i))}
+// The start time, not the cell or selected section, determines placement on the same date.
+// This also fixes older saved records whose section does not match their time.
+function resolvedSection(e){return e.start?timeSection(e.start):(e.section||'morning')}
+function scheduled(dates){const out=[];for(const e of state.events){if(e.repeat?.kind&&e.repeat.kind!=='none'){for(const date of dates){if(repeatMatches(e,date)){out.push({...e,date,occurrenceDate:date,isRepeat:true,section:resolvedSection(e)})}}}else if(dates.includes(e.date))out.push({...e,section:resolvedSection(e)})}for(const v of state.volunteering){for(const d of dates){if(!activeVolDate(v,d))continue;out.push({id:'vol:'+v.id+':'+d,title:v.title,date:d,start:v.start,end:v.end,section:v.start?timeSection(v.start):'wellbeing',details:v.details,isVol:true,done:!!state.volDone[v.id+':'+d]})}}return out}
+function timeLabel(e){return (e.start||'Time not confirmed')+(e.end?' – '+e.end:'')}
+function showOverlay(id,open){$(id).classList.toggle('open',open)}
+function syncSectionFromTime(){
+ const start=$('evStart').value, section=$('evType');
+ if(start){
+  section.value=timeSection(start);
+  section.disabled=true;
+  $('evSectionHint').textContent='Automatically placed in '+section.options[section.selectedIndex].text+' based on '+start+'. The date will stay the same.';
+ }else{
+  section.disabled=false;
+  $('evSectionHint').textContent='Add a start time to place this automatically. Without a time, choose a section yourself.';
+ }
+}
+$('evStart').addEventListener('input',syncSectionFromTime);
+$('evStart').addEventListener('change',syncSectionFromTime);['evTitle','evDate','evStart','evEnd'].forEach(id=>$(id).addEventListener('change',updateEventConflictHint));
+function selectedRepeatDays(){return [...document.querySelectorAll('#evRepeatDays input:checked')].map(x=>Number(x.value))}
+function setupRepeatDays(days){const set=new Set((days||[]).map(Number));document.querySelectorAll('#evRepeatDays input').forEach(x=>x.checked=set.has(Number(x.value)))}
+function syncRepeatUi(){
+ const kind=$('evRepeat').value,repeating=kind!=='none';
+ $('repeatUntilRow').classList.toggle('hidden',!repeating);
+ $('customDaysRow').classList.toggle('hidden',kind!=='custom');
+ $('evRepeatEnd').min=$('evDate').value;
+ const chosen=state.events.find(x=>x.id===editEventId);
+ const isSeries=!!(chosen?.repeat?.kind&&chosen.repeat.kind!=='none');
+ $('skipOccurrence').classList.toggle('hidden',!isSeries||!editOccurrenceDate);
+ $('clearSkipped').classList.toggle('hidden',!isSeries||!chosen.repeat.skips?.length);
+ $('removeEvent').textContent=isSeries?'Delete entire series':'Delete';
+ $('repeatEditHint').textContent=isSeries?'Editing the whole repeating series'+(editOccurrenceDate?' (selected session: '+editOccurrenceDate+')':'')+'. Use “Skip this date only” to cancel just one session.':'';
+}
+$('evRepeat').addEventListener('change',syncRepeatUi);
+$('evDate').addEventListener('change',()=>{const selected=$('evDate').value;if(selected&&$('evRepeat').value==='custom'&&!selectedRepeatDays().length)setupRepeatDays([parseDate(selected).getDay()]);syncRepeatUi()});
+let editOccurrenceDate=null;
+$('quickRepeat').onclick=()=>{editEvent(null,state.currentWeek,'morning');$('evRepeat').value='weekly';syncRepeatUi()};
+let editEventId=null;function editEvent(e,date,section){editEventId=e?.id||null;editOccurrenceDate=e?.occurrenceDate||null;const base=e?(state.events.find(x=>x.id===e.id)||e):null;$('eventHeading').textContent=e?'Edit event':'Add event';$('evTitle').value=base?.title||'';$('evDate').value=base?.date||date;$('evStart').value=base?.start||'';$('evEnd').value=base?.end||'';$('evType').value=base?.section||section||'morning';$('evDetail').value=base?.details||'';$('evCategory').value=base?.category||inferCategory(base);updateEventConflictHint();$('evRepeat').value=base?.repeat?.kind||'none';$('evRepeatEnd').value=base?.repeat?.until||'';setupRepeatDays(base?.repeat?.days||[parseDate(base?.date||date||state.currentWeek).getDay()]);syncSectionFromTime();syncRepeatUi();$('removeEvent').classList.toggle('hidden',!e);showOverlay('eventOverlay',true);$('evTitle').focus()}
+function closeEvent(){showOverlay('eventOverlay',false)}
+$('eventForm').addEventListener('submit',ev=>{
+ ev.preventDefault();const kind=$('evRepeat').value,date=$('evDate').value,until=$('evRepeatEnd').value;
+ if(kind!=='none'&&until&&until<date){alert('Repeat end date must be on or after the start date.');return}
+ if(kind==='custom'&&!selectedRepeatDays().length){alert('Select at least one weekday.');return}
+ const previous=state.events.find(e=>e.id===editEventId);
+ const item={id:editEventId||nextId(),title:$('evTitle').value.trim(),date,start:$('evStart').value,end:$('evEnd').value,section:resolvedSection({start:$('evStart').value,section:$('evType').value}),details:$('evDetail').value,category:$('evCategory').value,source:previous?.source||'manual'};
+ if(!item.title||!item.date)return;if(item.start&&item.end&&minutes(item.end)<=minutes(item.start)){alert('End time must be later than the start time.');return;}const found=clashesForCandidate(item);if(found.some(x=>x.confidence==='confirmed')&&!confirm('This activity overlaps another event: '+found.map(x=>x.name).join(', ')+'. Save anyway?'))return;
+ if(kind!=='none')item.repeat={kind,days:kind==='custom'?selectedRepeatDays():[],until:until||'',skips:Array.isArray(previous?.repeat?.skips)?previous.repeat.skips.filter(d=>d>=date&&(!until||d<=until)):[]};
+ const index=state.events.findIndex(e=>e.id===item.id);
+ if(index>=0)state.events[index]=item;else state.events.push(item);
+ save();closeEvent();render()
+});
+$('removeEvent').onclick=()=>{const e=state.events.find(x=>x.id===editEventId);if(e?.repeat?.kind&&e.repeat.kind!=='none'&&!confirm('Delete this entire repeating series?'))return;state.events=state.events.filter(e=>e.id!==editEventId);save();closeEvent();render()};
+$('skipOccurrence').onclick=()=>{const e=state.events.find(x=>x.id===editEventId);if(!e?.repeat||!editOccurrenceDate)return;e.repeat.skips ||= [];if(!e.repeat.skips.includes(editOccurrenceDate))e.repeat.skips.push(editOccurrenceDate);save();closeEvent();render()};
+$('clearSkipped').onclick=()=>{const e=state.events.find(x=>x.id===editEventId);if(!e?.repeat)return;if(!confirm('Restore all skipped dates in this repeating series?'))return;e.repeat.skips=[];save();syncRepeatUi();render()};
+$('closeEvent').onclick=closeEvent;
+let editVolId=null;function editVol(id){const v=state.volunteering.find(v=>v.id===id);if(!v)return;editVolId=id;$('volTitle').value=v.title;$('volPattern').value=v.pattern;$('volDay').value=String(v.day);$('volStart').value=v.start||'';$('volEnd').value=v.end||'';$('volDetails').value=v.details||'';$('volActive').checked=v.active!==false;showOverlay('volOverlay',true)}
+$('volForm').addEventListener('submit',ev=>{ev.preventDefault();const v=state.volunteering.find(v=>v.id===editVolId);if(!v)return;v.title=$('volTitle').value.trim();v.pattern=$('volPattern').value;v.day=Number($('volDay').value);v.start=$('volStart').value;v.end=$('volEnd').value;v.details=$('volDetails').value;v.active=$('volActive').checked;save();showOverlay('volOverlay',false);render()});$('closeVol').onclick=()=>showOverlay('volOverlay',false);
+function renderPriorities(){const root=$('priorities');root.replaceChildren();current().priorities.forEach((p,i)=>{const box=el('div',undefined,'panel prior'),number=el('span',String(i+1),'number'),inp=el('input');inp.value=p||'';inp.placeholder='Top priority '+(i+1);inp.setAttribute('aria-label','Top priority '+(i+1));inp.addEventListener('input',()=>{current().priorities[i]=inp.value;save()});box.append(number,inp);root.append(box)})}
+function renderWeek(){const d=datesThisWeek();$('weekTitle').textContent='Week of '+parseDate(d[0]).toLocaleDateString('en-GB',{day:'numeric',month:'long'})+' – '+parseDate(d[6]).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});$('pickWeek').value=state.currentWeek;const head=$('days');head.replaceChildren(el('th','Time / Focus'));d.forEach(s=>{const cell=el('th');cell.append(el('div',parseDate(s).toLocaleDateString('en-GB',{weekday:'short'})),el('div',parseDate(s).toLocaleDateString('en-GB',{day:'numeric',month:'short'}),'sub'));head.append(cell)});
+ const rows=$('schedule');rows.replaceChildren();const events=scheduled(d);for(const [section,title,hours] of TYPES){const tr=el('tr'),label=el('td');label.append(el('div',title));if(hours)label.append(el('small',hours));tr.append(label);for(const date of d){const td=el('td'),slot=el('div',undefined,'slot');const evs=events.filter(e=>e.date===date&&e.section===section).sort((a,b)=>(a.start||'').localeCompare(b.start||''));for(const event of evs){const b=el('button',undefined,'event'+(event.isVol?' vol':'')+(event.done?' done':''));b.type='button';b.append(el('span',timeLabel(event)),el('strong',event.title));if(event.isRepeat)b.append(el('span','↻ '+repeatLabel(event.repeat.kind),'session-repeat'));b.addEventListener('click',()=>{if(event.isVol){const key=event.id.split(':').slice(1).join(':');state.volDone[key]=!state.volDone[key];save();render()}else editEvent(event)});b.title=event.isVol?'Mark session completed / incomplete':'Edit event';slot.append(b)}slot.append(btn('+ Add',()=>editEvent(null,date,section),'addslot'));td.append(slot);tr.append(td)}rows.append(tr)}$('statEvents').textContent=events.length;$('statVol').textContent=events.filter(e=>e.isVol).length}
+function renderVol(){const root=$('volGrid');root.replaceChildren();for(const v of state.volunteering){const card=el('div',undefined,'panel volcard'+(v.active?'':' off'));card.append(el('h3',v.title));let schedule=v.pattern==='unscheduled'?'Time to be confirmed':v.pattern==='monthly'?'First & last Saturday · time unconfirmed':'Every '+DAYS[v.day]+' · '+(v.start||'time unconfirmed')+(v.end?'–'+v.end:'');card.append(el('div',schedule,'schedule'),el('p',v.details));card.append(btn('Edit schedule',()=>editVol(v.id),'small'));root.append(card)}}
+function renderBoards(){const root=$('boards'),w=current();root.replaceChildren();for(const [id,name] of BOARDS){const panel=el('div',undefined,'panel'),title=el('h3',name),list=el('div',undefined,'tasklist');panel.append(title);for(const task of [...w.tasks[id]].sort(taskSort)){const row=el('div',undefined,'task'),checkbox=el('input');checkbox.type='checkbox';checkbox.checked=!!task.done;const wrap=el('div',undefined,'task-body'),label=el('label',task.text,task.done?'finished':'');const meta=el('div',formatTaskMeta(task),'help');wrap.append(label,meta);checkbox.addEventListener('change',()=>{task.done=checkbox.checked;save();render()});const actions=el('div',undefined,'task-actions');actions.append(btn('Edit',()=>openTask(id,task),'small'),btn('Schedule',()=>scheduleTask(task),'small'),btn('×',()=>{w.tasks[id]=w.tasks[id].filter(t=>t.id!==task.id);save();render()},'small danger'));row.append(checkbox,wrap,actions);list.append(row)}panel.append(list);const form=el('form',undefined,'newtask'),input=el('input');input.placeholder='New task';input.setAttribute('aria-label','Add '+name+' task');const add=el('button','+','blue');add.type='submit';form.append(input,add);form.addEventListener('submit',ev=>{ev.preventDefault();if(!input.value.trim())return;w.tasks[id].push({id:nextId(),text:input.value.trim(),done:false,priority:'medium',estimate:60});save();render()});panel.append(form);root.append(panel)}}
+function renderOther(){const w=current();$('notes').value=w.notes||'';const tasks=BOARDS.flatMap(([k])=>w.tasks[k]);$('statTasks').textContent=tasks.filter(t=>t.done).length+' / '+tasks.length;$('icsStatus').textContent=state.importInfo||'Not imported';$('googleStatus').textContent=state.googleImportInfo||'Not imported';const tips=[];const unfinished=tasks.filter(t=>!t.done);if(unfinished.length)tips.push(unfinished.length+' tasks are still open this week. Prioritise the most urgent ones.');if(state.volunteering.some(v=>v.id==='sherburn'&&v.active)&&state.volunteering.some(v=>v.id==='cemetery'&&v.active))tips.push('Wednesday: Sherburn House starts at 13:30 and Stockton Road Cemetery at 14:00. Check whether the sessions overlap.');if(state.volunteering.some(v=>v.active&&v.pattern==='unscheduled'))tips.push('DurhamWorks and Course Representative commitments have no confirmed timetable yet.');const next=plusDays(state.currentWeek,7),nextWeek=state.weeks[next];if(nextWeek&&BOARDS.some(([k])=>nextWeek.tasks?.[k]?.length))tips.push('The following week already has tasks recorded.');if(!tips.length)tips.push('All current tasks are complete. Review upcoming classes and volunteering commitments.');const root=$('recommend');root.replaceChildren(...tips.map(t=>el('p',t)))}
+function render(){renderPriorities();renderWeek();renderVol();renderBoards();renderOther();renderInsights()}
+$('notes').addEventListener('input',()=>{current().notes=$('notes').value;save()});
+$('prevWeek').onclick=()=>{state.currentWeek=plusDays(state.currentWeek,-7);save();render()};
+$('nextWeek').onclick=()=>{state.currentWeek=plusDays(state.currentWeek,7);save();render()};
+$('todayWeek').onclick=()=>{state.currentWeek=monday(localDate(new Date()));save();render()};
+$('pickWeek').addEventListener('change',()=>{if($('pickWeek').value){state.currentWeek=monday($('pickWeek').value);save();render()}});
+$('printBtn').onclick=()=>window.print();
+$('backupOpen').onclick=()=>{$('backupText').value=JSON.stringify(state,null,2);showOverlay('backupOverlay',true)};
+$('backupClose').onclick=()=>showOverlay('backupOverlay',false);
+$('downloadBackup').onclick=()=>{
+ const backup=JSON.stringify(state,null,2);
+ const blob=new Blob([backup],{type:'application/json'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');
+ a.href=url;a.download='durham-planner-backup-'+localDate(new Date())+'.json';
+ document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+function restore(text){const recovered=normalize(JSON.parse(text));if(!confirm('Replace your current planner data with this backup?'))return;state=recovered;save();showOverlay('backupOverlay',false);render()}
+$('restoreBtn').onclick=()=>{try{restore($('backupText').value)}catch(e){alert('Invalid backup file: '+e.message)}};
+$('backupFile').onchange=async ev=>{const file=ev.target.files[0];if(!file)return;try{restore(await file.text())}catch(e){alert('Could not restore file: '+e.message)}ev.target.value=''};
+// iCalendar parser: only reads a local user-selected file. No calendar URL is stored or fetched.
+function unfold(text){return text.replace(/\r?\n[ \t]/g,'').split(/\r?\n/)}
+function fields(lines){const d={};for(const ln of lines){const p=ln.indexOf(':');if(p<0)continue;const key=ln.slice(0,p).split(';')[0].toUpperCase();(d[key] ||= []).push({params:ln.slice(0,p),value:ln.slice(p+1)})}return d}
+function icsValue(d,key){return d[key]?.[0]?.value||''}
+function textValue(s){return String(s).replace(/\\[nN]/g,'\n').replace(/\\,/g,',').replace(/\\;/g,';').replace(/\\\\/g,'\\')}
+function calendarDate(entry){if(!entry||!/^\d{8}/.test(entry.value))return null;const v=entry.value;let date=v.slice(0,4)+'-'+v.slice(4,6)+'-'+v.slice(6,8),time=v.includes('T')?v.slice(9,11)+':'+v.slice(11,13):'';if(v.endsWith('Z')&&time){const moment=new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13),+v.slice(13,15)||0));const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(moment).filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));date=parts.year+'-'+parts.month+'-'+parts.day;time=parts.hour+':'+parts.minute}return {date,time}}
+function timeSection(s){return !s?'deadline':s<'12:00'?'morning':s<'17:00'?'afternoon':'evening'}
+function minutes(s){return +(s||'0').slice(0,2)*60+ +(s||'0').slice(3,5)}
+function hhmm(n){return String(Math.floor(n/60)%24).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function importCalendar(text,source="durham"){if(!text.includes('BEGIN:VCALENDAR'))throw Error('This does not look like an .ics calendar file.');const raw=[];let current=null;for(const line of unfold(text)){if(line==='BEGIN:VEVENT'){current=[]}else if(line==='END:VEVENT'){if(current)raw.push(fields(current));current=null}else if(current)current.push(line)}const out=[],limit='2028-12-31';let count=0;for(const e of raw){if(icsValue(e,'STATUS')==='CANCELLED')continue;const start=calendarDate(e.DTSTART?.[0]),end=calendarDate(e.DTEND?.[0]);if(!start)continue;const uid=icsValue(e,'UID')||icsValue(e,'SUMMARY')||'event';const rule=icsValue(e,'RRULE'),title=textValue(icsValue(e,'SUMMARY'))||'University event',details=[textValue(icsValue(e,'LOCATION')),textValue(icsValue(e,'DESCRIPTION'))].filter(Boolean).join(' · ');const exclude=new Set((e.EXDATE||[]).flatMap(x=>x.value.split(',').map(v=>calendarDate({value:v}))).filter(Boolean).map(x=>x.date));const duration=start.time&&end?.time?Math.max(0,Math.round((Date.parse(end.date+'T'+end.time)-Date.parse(start.date+'T'+start.time))/60000)):0;
+ function add(date){if(date>limit||exclude.has(date)||count>=7000)return;const last=start.time&&duration?hhmm((minutes(start.time)+duration)%1440):end?.time||'';out.push({id:source+':'+uid+':'+date,date,title,start:start.time,end:last,section:timeSection(start.time),details,source});count++}
+ if(!rule){add(start.date);continue}const args=Object.fromEntries(rule.split(';').map(x=>x.split('='))),frequency=args.FREQ,interval=Math.max(1,Number(args.INTERVAL)||1),until=calendarDate({value:args.UNTIL||''})?.date||limit,maxCount=Math.min(500,Number(args.COUNT)||500);let repetitions=0;const bydays=(args.BYDAY||'').split(',').filter(Boolean).map(s=>s.slice(-2));const wd=['SU','MO','TU','WE','TH','FR','SA'];for(let i=0;i<730&&repetitions<maxCount;i++){const date=plusDays(start.date,i);if(date>until||date>limit)break;let eligible=false;if(frequency==='DAILY')eligible=i%interval===0;else if(frequency==='WEEKLY'){const sday=parseDate(start.date).getDay();const day=parseDate(date).getDay();const weekIndex=Math.floor((i+(sday+6)%7)/7);eligible=weekIndex%interval===0&&(bydays.length?bydays.includes(wd[day]):day===sday)}else{add(start.date);break}if(eligible){add(date);repetitions++}}}
+ if(!out.length)throw Error('No calendar events were found. Check the exported date range.');const old=new Map(state.events.filter(e=>e.source===source).map(e=>[e.id,e]));state.events=state.events.filter(e=>e.source!==source).concat(out.map(e=>({...e,done:old.get(e.id)?.done||false})));if(source==='durham')state.importInfo=out.length+' timetable events imported';else state.googleImportInfo=out.length+' Google events imported';save();render();return out.length}
+$('icsOpen').onclick=()=>$('icsFile').click();
+$('icsFile').addEventListener('change',async ev=>{const f=ev.target.files[0];if(!f)return;try{const n=importCalendar(await f.text(),'durham');alert(n+' Durham timetable entries imported. Your personal tasks were kept.')}catch(e){alert('Import failed: '+e.message)}ev.target.value=''});
+// Local intelligence: deterministic, no network requests, no model API, no personal feeds embedded.
+function inferCategory(e){
+ if(!e)return 'Other';
+ if(e.category)return e.category;
+ if(e.isVol||e.source==='volunteering')return 'Volunteering';
+ if(e.source==='durham')return 'University';
+ const name=(e.title||e.text||'').toLowerCase();
+ if(/volunteer|charity|cemetery|riverscape|gilesgate|sherburn|durhamworks/.test(name))return 'Volunteering';
+ if(/study|revision|assignment|homework|essay|research|reading/.test(name))return 'Study';
+ if(/lecture|seminar|workshop|tutorial|class|university/.test(name))return 'University';
+ if(/gym|run|sport|workout|exercise|swim|wellbeing|yoga/.test(name))return 'Exercise';
+ if(/friend|cinema|dinner|party|social|coffee/.test(name))return 'Social';
+ return 'Personal';
+}
+function validInterval(e,assumeUnknown=false){
+ if(!e.start||!/^\d\d:\d\d$/.test(e.start))return null;
+ const start=minutes(e.start);
+ const end=e.end&&/^\d\d:\d\d$/.test(e.end)?minutes(e.end):assumeUnknown?Math.min(1440,start+60):null;
+ if(end===null||end<=start)return null;
+ return {start,end,certain:!!e.end};
+}
+function overlaps(a,b){return a.start<b.end&&b.start<a.end}
+function unionLength(ranges){
+ if(!ranges.length)return 0;
+ const sorted=[...ranges].sort((a,b)=>a.start-b.start),merged=[];
+ for(const s of sorted){const last=merged[merged.length-1];if(last&&s.start<=last.end)last.end=Math.max(last.end,s.end);else merged.push({start:s.start,end:s.end})}
+ return merged.reduce((sum,r)=>sum+(r.end-r.start),0);
+}
+function analyseConflicts(events){
+ const out=[];
+ for(let i=0;i<events.length;i++)for(let j=i+1;j<events.length;j++){
+  const a=events[i],b=events[j];if(a.date!==b.date||a.id===b.id)continue;
+  const ia=validInterval(a,true),ib=validInterval(b,true);
+  if(!ia||!ib||!overlaps(ia,ib))continue;
+  out.push({date:a.date,a,b,confidence:ia.certain&&ib.certain?'confirmed':'possible'});
+ }
+ return out;
+}
+function clashesForCandidate(candidate){
+ const dates=candidate.repeat?.kind&&candidate.repeat.kind!=='none'?datesThisWeek().filter(d=>repeatMatches(candidate,d)):[candidate.date];
+ const result=[];
+ for(const d of dates){const others=scheduled([d]).filter(e=>e.id!==candidate.id);
+ for(const clash of analyseConflicts([{...candidate,date:d},...others])){
+  if(clash.a.id!==candidate.id&&clash.b.id!==candidate.id)continue;
+  const other=clash.a.id===candidate.id?clash.b:clash.a;
+  result.push({name:other.title,date:d,confidence:clash.confidence});
+ }}return result;
+}
+function updateEventConflictHint(){
+ const hint=$('evConflictHint');if(!hint)return;
+ const proposed={id:editEventId||'new-event',title:$('evTitle').value||'New activity',date:$('evDate').value,start:$('evStart').value,end:$('evEnd').value};
+ if(!proposed.date||!proposed.start){hint.textContent='';return}
+ const found=clashesForCandidate(proposed);
+ hint.textContent=found.length?'⚠ '+found.slice(0,3).map(x=>(x.confidence==='confirmed'?'Overlap':'Possible clash')+' with '+x.name).join(' · '):'✓ No known conflict at this time';
+ hint.className=found.length?'help notice-warning':'help notice-good';
+}
+function renderConflicts(){
+ const all=analyseConflicts(scheduled(datesThisWeek())),root=$('clashList');root.replaceChildren();
+ $('clashCount').textContent=all.length?all.length+' flagged':'No conflicts found';
+ if(!all.length){root.append(el('p','No overlapping timed activities found this week.','help'));return}
+ for(const c of all.slice(0,12)){
+  const box=el('div',undefined,'clash-item'),head=el('strong',(c.confidence==='confirmed'?'Confirmed overlap':'Possible overlap')+' · '+DAYS[parseDate(c.date).getDay()]+' '+parseDate(c.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+  box.append(head,el('div',c.a.title+' ('+timeLabel(c.a)+') ↔ '+c.b.title+' ('+timeLabel(c.b)+')','help'));
+  if(c.confidence==='possible')box.append(el('small','One or both end times are unknown; a 60-minute provisional duration was used.'));
+  box.append(btn('Find another time',()=>{const target=[c.a,c.b].find(x=>!x.isVol&&x.source==='manual')||c.b;$('smartTitle').value=target.title;const interval=validInterval(target,true);$('smartDuration').value=String([30,60,90,120,180].find(x=>x>=Math.max(30,interval?(interval.end-interval.start):60))||60);runSmart();$('smartForm').scrollIntoView({behavior:'smooth',block:'center'})},'small'));
+  root.append(box);
+ }
+ if(all.length>12)root.append(el('p','Showing 12 of '+all.length+' conflicts.','help'));
+}
+function getWorkingWindow(period){
+ if(period==='morning')return [480,720];
+ if(period==='afternoon')return [720,1020];
+ if(period==='evening')return [1020,1320];
+ return [480,1320];
+}
+function findOpenSlots(length=60,period='any',dates=datesThisWeek(),limit=6){
+ const results=[],all=scheduled(dates),[minT,maxT]=getWorkingWindow(period);
+ for(const date of dates){
+  const dayEvents=all.filter(e=>e.date===date),intervals=dayEvents.map(e=>validInterval(e,true)).filter(Boolean);
+  const confirmed=dayEvents.map(e=>validInterval(e,false)).filter(Boolean);
+  const load=unionLength(confirmed)/60;
+  const tentative=dayEvents.filter(e=>e.start&&!e.end).length;
+  for(let t=minT;t+length<=maxT;t+=15){
+   // 10-minute buffer before and after another timed commitment.
+   if(intervals.some(i=>t<i.end+10&&t+length>i.start-10))continue;
+   const score=load*9+tentative*2+Math.abs(t-600)/120+(parseDate(date).getDay()===0?3:0);
+   results.push({date,start:hhmm(t),end:hhmm(t+length),score,hours:load});
+  }
+ }
+ results.sort((a,b)=>a.score-b.score||a.date.localeCompare(b.date)||a.start.localeCompare(b.start));
+ // Offer a variety of days rather than six near-identical start times.
+ const selected=[],counts={};
+ for(const slot of results){if((counts[slot.date]||0)>=1)continue;selected.push(slot);counts[slot.date]=(counts[slot.date]||0)+1;if(selected.length===limit)break}
+ return selected;
+}
+function presentSlots(slots,target,container){
+ container.replaceChildren();
+ if(!slots.length){container.append(el('p','No gap of that length found within your selected period. Try a shorter duration or another period.','help'));return}
+ container.append(el('p','Suggested openings (10-minute buffers; provisional 60-minute blocks for unknown end times):','help'));
+ for(const slot of slots){
+  const line=el('div',undefined,'suggested-slot'),label=el('div',undefined,'slot-label');
+  label.append(el('strong',parseDate(slot.date).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})+' · '+slot.start+'–'+slot.end),el('small',slot.hours.toFixed(1)+' hrs with confirmed times currently scheduled'));
+  line.append(label,btn('Review & add',()=>openSuggestedEvent(target,slot),'small blue'));container.append(line);
+ }
+}
+function openSuggestedEvent(title,slot){
+ editEvent(null,slot.date,timeSection(slot.start));$('evTitle').value=title;
+ $('evStart').value=slot.start;$('evEnd').value=slot.end;
+ $('evCategory').value=inferCategory({title});syncSectionFromTime();updateEventConflictHint();
+}
+function runSmart(){
+ const length=Number($('smartDuration').value)||60,period=$('smartPeriod').value,title=$('smartTitle').value.trim()||'Study session';
+ presentSlots(findOpenSlots(length,period),title,$('smartResults'));
+}
+$('smartForm').addEventListener('submit',e=>{e.preventDefault();runSmart()});
+// A conservative local parser: shows prefilled event editor for approval; no event auto-saved.
+const WEEK_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function parseNaturalActivity(raw){
+ let value=raw.trim();if(!value)throw Error('Describe an activity first.');
+ const original=value.toLowerCase();let date=state.currentWeek,kind='none',start='',end='',dur=0;
+ const duration=value.match(/\bfor\s+(\d+(?:\.\d+)?)\s*(hours?|hrs?|h|minutes?|mins?)\b/i);
+ if(duration){dur=/h/i.test(duration[2])?Number(duration[1])*60:Number(duration[1]);value=value.replace(duration[0],' ')}
+ let timematch=value.match(/\b(?:at\s+)?(1[0-2]|0?[1-9])(?::([0-5]\d))?\s*(am|pm)\b/i);
+ if(timematch){let h=Number(timematch[1])%12;if(timematch[3].toLowerCase()==='pm')h+=12;start=hhmm(h*60+Number(timematch[2]||0));value=value.replace(timematch[0],' ')}
+ else{timematch=value.match(/\b(?:at\s+)?([01]?\d|2[0-3]):([0-5]\d)\b/i);if(timematch){start=hhmm(Number(timematch[1])*60+Number(timematch[2]));value=value.replace(timematch[0],' ')}}
+ if(start&&dur>0&&minutes(start)+dur<1440)end=hhmm(minutes(start)+dur);
+ const explicit=value.match(/\b(20\d\d)-(\d\d)-(\d\d)\b/);
+ if(explicit){date=explicit[0];if(Number.isNaN(parseDate(date).getTime()))throw Error('Invalid date');value=value.replace(explicit[0],' ')}
+ const days=[];
+ for(let d=0;d<7;d++){
+  const pattern=new RegExp('\\b'+WEEK_NAMES[d]+'s?\\b|\\b'+WEEK_NAMES[d].slice(0,3)+'\\b','i');
+  if(pattern.test(value))days.push(d);
+  value=value.replace(new RegExp('\\b'+WEEK_NAMES[d]+'s?\\b|\\b'+WEEK_NAMES[d].slice(0,3)+'\\b','ig'),' ');
+ }
+ if(/\b(tomorrow|tmrw)\b/i.test(value)){date=plusDays(localDate(new Date()),1);value=value.replace(/\b(tomorrow|tmrw)\b/ig,' ')}
+ else if(/\btoday\b/i.test(value)){date=localDate(new Date());value=value.replace(/\btoday\b/ig,' ')}
+ else if(days.length)date=plusDays(state.currentWeek,(days[0]+6)%7+(/\bnext\b/i.test(original)?7:0));
+ if(/\b(every|each|daily|weekly|fortnightly|monthly|weekdays)\b/i.test(original)){
+  if(/\b(fortnightly|every other week|every 2 weeks|every two weeks|biweekly)\b/i.test(original))kind='fortnightly';
+  else if(/\b(monthly|every month)\b/i.test(original))kind='monthly';
+  else if(/\b(weekdays|every weekday|every working day)\b/i.test(original))kind='weekdays';
+  else if(days.length>1)kind='custom';
+  else if(days.length===1)kind='weekly';
+  else if(/\b(daily|every day|each day)\b/i.test(original))kind='daily';
+ }
+ value=value.replace(/\b(every|each|daily|weekly|fortnightly|monthly|weekdays|on|at|next|and|the|starting|start|from|every other week|every 2 weeks|every two weeks|biweekly)\b/ig,' ');
+ const title=value.replace(/[.,;:]+/g,' ').replace(/\s+/g,' ').trim()||raw;
+ return {title,date,start,end,kind,days};
+}
+$('naturalForm').addEventListener('submit',e=>{
+ e.preventDefault();const message=$('naturalMessage');
+ try{const result=parseNaturalActivity($('naturalText').value);editEvent(null,result.date,timeSection(result.start));$('evTitle').value=result.title;
+  $('evDate').value=result.date;$('evStart').value=result.start;$('evEnd').value=result.end;
+  $('evRepeat').value=result.kind;setupRepeatDays(result.days.length?result.days:[parseDate(result.date).getDay()]);
+  $('evCategory').value=inferCategory({title:result.title});syncSectionFromTime();syncRepeatUi();updateEventConflictHint();
+  message.textContent='Review the interpreted session, then select Save.';
+ }catch(err){message.textContent='Could not interpret that activity: '+err.message}
+});
+function priorityValue(task){return ({high:0,medium:1,low:2})[task.priority]??1}
+function taskSort(a,b){return Number(!!a.done)-Number(!!b.done)||priorityValue(a)-priorityValue(b)||(a.due||'9999').localeCompare(b.due||'9999')}
+function formatTaskMeta(t){return (t.priority||'medium').toUpperCase()+(t.due?' · Due '+parseDate(t.due).toLocaleDateString('en-GB',{day:'numeric',month:'short'}):'')+(t.estimate?' · '+t.estimate+' min':'')}
+let editingTask=null,editingBoard=null;
+function openTask(board,t){editingTask=t;editingBoard=board;$('taskTitle').value=t.text;$('taskPriority').value=t.priority||'medium';$('taskDue').value=t.due||'';$('taskEst').value=String(t.estimate||60);showOverlay('taskOverlay',true)}
+$('taskClose').onclick=()=>showOverlay('taskOverlay',false);
+$('taskForm').addEventListener('submit',e=>{e.preventDefault();if(!editingTask)return;editingTask.text=$('taskTitle').value.trim();editingTask.priority=$('taskPriority').value;editingTask.due=$('taskDue').value;editingTask.estimate=Number($('taskEst').value);save();showOverlay('taskOverlay',false);render()});
+function scheduleTask(task){const suggestions=findOpenSlots(Number(task.estimate)||60,'any');if(!suggestions.length){alert('No suitable gap found in this week. Try the Smart scheduling section.');return}openSuggestedEvent(task.text,suggestions[0]);$('evCategory').value=inferCategory(task)}
+function renderTaskQueue(){
+ const root=$('priorityQueue');root.replaceChildren();
+ const all=BOARDS.flatMap(([board])=>current().tasks[board].map(task=>({...task,board}))).filter(t=>!t.done).sort((a,b)=>{
+  const today=localDate(new Date()),ad=a.due&&a.due<=plusDays(today,2),bd=b.due&&b.due<=plusDays(today,2);
+  return Number(!!bd)-Number(!!ad)||priorityValue(a)-priorityValue(b)||(a.due||'9999').localeCompare(b.due||'9999')
+ });
+ if(!all.length){root.append(el('p','No unfinished tasks. Add one below to build your priority queue.','help'));return}
+ for(const t of all.slice(0,7)){
+  const line=el('div',undefined,'priority-item'),l=el('div');l.append(el('strong',t.text),el('div',formatTaskMeta(t),'help'));
+  line.append(l,btn('Find time',()=>scheduleTask(t),'small'));root.append(line)
+ }
+}
+function categoryOf(e){return e.isVol?'Volunteering':inferCategory(e)}
+function weeklyStats(){
+ const days=datesThisWeek(),all=scheduled(days),byDay={},totals={},known=all.filter(e=>validInterval(e,false));
+ for(const d of days){const ints=known.filter(e=>e.date===d).map(e=>validInterval(e));byDay[d]=unionLength(ints)/60}
+ for(const e of known){const i=validInterval(e);const cat=categoryOf(e);totals[cat]=(totals[cat]||0)+(i.end-i.start)/60}
+ return {byDay,totals,known,all,planned:Object.values(byDay).reduce((a,b)=>a+b,0)};
+}
+function renderAnalysis(){
+ const s=weeklyStats(),chart=$('analysisChart');chart.replaceChildren();
+ const peak=Math.max(4,...Object.values(s.byDay));
+ for(const [date,hours] of Object.entries(s.byDay)){
+  const row=el('div',undefined,'bar-row');row.append(el('span',parseDate(date).toLocaleDateString('en-GB',{weekday:'short'})));
+  const track=el('div',undefined,'bar-track'),fill=el('div',undefined,'bar-fill');fill.style.width=(hours/peak*100).toFixed(2)+'%';track.append(fill);
+  row.append(track,el('strong',hours.toFixed(1)+'h'));chart.append(row)
+ }
+ $('totalHours').textContent=s.planned.toFixed(1)+' scheduled hours';
+ const categories=$('analysisCategories');categories.replaceChildren();
+ for(const [cat,h] of Object.entries(s.totals).sort((a,b)=>b[1]-a[1])){
+  const item=el('span',cat+': '+h.toFixed(1)+'h','category-chip');categories.append(item)
+ }
+ if(!categories.childElementCount)categories.append(el('span','No events with both a start and an end time yet.','help'));
+ const maxLoad=Math.max(...Object.values(s.byDay));const biggest=Object.keys(s.byDay).find(d=>s.byDay[d]===maxLoad);
+ $('workloadHint').textContent=maxLoad>6?'Your busiest recorded day is '+DAYS[parseDate(biggest).getDay()]+' ('+maxLoad.toFixed(1)+'h). Consider lighter days for flexible tasks.':'Your recorded timed activities are relatively spread out; undetermined event lengths are not included.';
+}
+function renderSmartRecommendations(){
+ const box=$('recommend'),tasks=BOARDS.flatMap(([id])=>current().tasks[id]).filter(t=>!t.done);
+ const overdue=tasks.filter(t=>t.due&&t.due<localDate(new Date()));
+ if(overdue.length)box.append(el('p','⚠ '+overdue.length+' overdue task(s). Address these before adding optional activities.'));
+ const dueSoon=tasks.filter(t=>t.due&&t.due>=localDate(new Date())&&t.due<=plusDays(localDate(new Date()),7));
+ if(dueSoon.length)box.append(el('p','📌 '+dueSoon.length+' upcoming deadline(s) in the next 7 days. Use “Find time” in the priority queue.'));
+ const s=weeklyStats();const biggest=Object.entries(s.byDay).sort((a,b)=>b[1]-a[1])[0];
+ if(biggest&&biggest[1]>=5)box.append(el('p','Balance your workload: '+DAYS[parseDate(biggest[0]).getDay()]+' currently has '+biggest[1].toFixed(1)+' confirmed hours.'));
+ const proposed=findOpenSlots(90,'any',datesThisWeek(),1);
+ if(proposed.length){const p=proposed[0];const line=el('p',undefined);line.append(document.createTextNode('Suggested 90-minute focus block: '+DAYS[parseDate(p.date).getDay()]+' '+p.start+'–'+p.end+'. '),btn('Review',()=>openSuggestedEvent('Focused study',p),'small'));box.append(line)}
+ const cs=analyseConflicts(s.all);if(cs.length)box.append(el('p','⚠ '+cs.length+' overlapping or possibly overlapping pair(s) found. Check the conflict panel before confirming commitments.'));
+}
+function renderInsights(){renderConflicts();renderAnalysis();renderTaskQueue();renderSmartRecommendations()}
+function chatReply(q){
+ const text=q.trim().toLowerCase(),s=weeklyStats(),clashes=analyseConflicts(s.all);
+ if(/(available|free|fit|schedule|study|studying|find time|when can)/.test(text)){
+  const amount=text.match(/(\d+(?:\.\d+)?)\s*(hours?|hrs?|minutes?|mins?)/),duration=amount?Math.round(Number(amount[1])* (/min/.test(amount[2])?1:60)):60;
+  const period=/morning/.test(text)?'morning':/afternoon/.test(text)?'afternoon':/evening/.test(text)?'evening':'any';
+  const slots=findOpenSlots(Math.min(Math.max(duration,15),240),period);
+  return {message:slots.length?'I found '+slots.length+' possible '+duration+'-minute blocks this week. The first options are below.':'I could not find a contiguous '+duration+'-minute opening. Try a shorter session or another period.',slots,title:/exercise|gym/.test(text)?'Exercise':'Study session'};
+ }
+ if(/conflict|overlap|clash|double.?book/.test(text)){
+  const day=WEEK_NAMES.find(x=>text.includes(x.toLowerCase()));const items=day?clashes.filter(c=>parseDate(c.date).getDay()===WEEK_NAMES.indexOf(day)):clashes;
+  return {message:items.length?items.slice(0,5).map(c=>(c.confidence==='confirmed'?'Confirmed':'Possible')+' · '+c.date+': '+c.a.title+' / '+c.b.title).join('\n'):'No known overlapping timed commitments'+(day?' on '+day:' this week')+'.'};
+ }
+ if(/priorit|deadline|urgent|task/.test(text)){
+  const tasks=BOARDS.flatMap(([k])=>current().tasks[k]).filter(t=>!t.done).sort(taskSort);
+  return {message:tasks.length?'Your next priorities:\n'+tasks.slice(0,5).map((t,i)=>(i+1)+'. '+t.text+(t.due?' (due '+t.due+')':'')).join('\n'):'No outstanding tasks recorded this week.'};
+ }
+ if(/volunteer|community|charity/.test(text)){
+  const confirmed=s.known.filter(x=>categoryOf(x)==='Volunteering').reduce((a,e)=>a+(minutes(e.end)-minutes(e.start))/60,0);
+  const unknown=s.all.filter(x=>categoryOf(x)==='Volunteering'&&(!x.start||!x.end)).length;
+  return {message:'Volunteering with confirmed times: '+confirmed.toFixed(1)+' hours this week. '+unknown+' volunteering session(s) lack an exact start or end time and are excluded from that total.'};
+ }
+ if(/(busy|analysis|workload|hours|how much|overview|week)/.test(text)){
+  const pairs=Object.entries(s.byDay).sort((a,b)=>b[1]-a[1]);
+  return {message:'This week has '+s.planned.toFixed(1)+' non-overlapping hours with confirmed start/end times and '+s.all.length+' event instances. Busiest: '+DAYS[parseDate(pairs[0][0]).getDay()]+' ('+pairs[0][1].toFixed(1)+'h). Note that untimed sessions are excluded.'};
+ }
+ return {message:'I can help find free time, check clashes, review priorities, summarise volunteering, or analyse your week. Try “When can I fit 2 hours of studying?” or “Any conflicts on Wednesday?”'};
+}
+function appendChat(text,from){const d=el('div',text,'chat-msg '+(from==='user'?'user':'bot'));$('chatHistory').append(d);$('chatHistory').scrollTop=$('chatHistory').scrollHeight;while($('chatHistory').childElementCount>18)$('chatHistory').firstChild.remove()}
+$('chatForm').addEventListener('submit',e=>{
+ e.preventDefault();const field=$('chatInput'),q=field.value.trim();if(!q)return;appendChat(q,'user');field.value='';
+ const reply=chatReply(q);appendChat(reply.message,'bot');
+ if(reply.slots?.length){const row=el('div',undefined,'chat-suggestions');for(const slot of reply.slots.slice(0,3))row.append(btn(DAYS[parseDate(slot.date).getDay()]+' '+slot.start+'–'+slot.end,()=>openSuggestedEvent(reply.title,slot),'small'));$('chatHistory').append(row)}
+ $('chatHistory').scrollTop=$('chatHistory').scrollHeight;
+});
+$('googleIcsOpen').onclick=()=>$('googleIcsFile').click();
+$('googleIcsFile').addEventListener('change',async ev=>{
+ const f=ev.target.files[0];if(!f)return;
+ try{const count=importCalendar(await f.text(),'google');alert(count+' Google Calendar events imported. Durham events and personal tasks were preserved.')}catch(e){alert('Google Calendar import failed: '+e.message)}
+ ev.target.value='';
+});
+
+render();
+
+</script>
+</body></html>
