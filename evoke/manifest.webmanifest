@@ -1,0 +1,19 @@
+{
+  "name": "Evoke — The Practice of Evocative Words",
+  "short_name": "Evoke",
+  "description": "A quiet space for reflection, evocative words and daily practice.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#244f3f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
